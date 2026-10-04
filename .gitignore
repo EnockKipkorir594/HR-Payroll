@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Prisma generated client (regenerate with `pnpm prisma:generate`)
+apps/packages/database/generated/
+
+# Environment — never commit real secrets
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+# Local databases / volumes
+infrastructure/data/
+*.sqlite
+*.sqlite3
+*.db
+
+# Certificates and keys — must never be committed
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_ed25519*
+.env.*.local
+
+# Deployment secrets
+service-account*.json
+gcp-key*.json
