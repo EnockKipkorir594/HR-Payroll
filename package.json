@@ -1,0 +1,51 @@
+{
+  "name": "payroll-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Kenya-first payroll management platform (monorepo root)",
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter @payroll/database generate && pnpm -r --filter \"./apps/**\" build",
+    "build:packages": "pnpm --filter @payroll/database generate && pnpm -r --filter \"./apps/packages/**\" build",
+    "clean": "pnpm -r exec rm -rf dist .turbo .next",
+    "dev": "pnpm --parallel --filter @payroll/api --filter @payroll/worker dev",
+    "dev:api": "pnpm --filter @payroll/api dev",
+    "dev:worker": "pnpm --filter @payroll/worker dev",
+    "dev:web": "pnpm --filter @payroll/web dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,yaml,yml}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky",
+    "prisma:generate": "pnpm --filter @payroll/database generate",
+    "prisma:migrate": "pnpm --filter @payroll/database migrate:dev",
+    "prisma:deploy": "pnpm --filter @payroll/database migrate:deploy",
+    "prisma:seed": "pnpm --filter @payroll/database seed",
+    "prisma:studio": "pnpm --filter @payroll/database studio",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run --project integration",
+    "test:unit": "vitest run --project unit",
+    "typecheck": "pnpm --filter @payroll/database generate && pnpm -r typecheck",
+    "up": "docker compose -f infrastructure/docker-compose.yml up -d postgres redis",
+    "down": "docker compose -f infrastructure/docker-compose.yml down"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "^22.18.0",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-security": "4.2.0",
+    "globals": "17.13.0",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.0",
+    "vitest": "5.0.3"
+  }
+}
