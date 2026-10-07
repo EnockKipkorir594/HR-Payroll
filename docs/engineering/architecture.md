@@ -117,7 +117,7 @@ Backend-specific business logic must remain inside the backend.
 The frontend communicates with the backend through defined APIs.
 The frontend must not access Prisma or PostgreSQL directly.
 
-## Architctural Rules
+## Architectural Rules
 
 When adding a feature, developers should first identify:
 
